@@ -1,0 +1,3 @@
+recursive-include pretalx_iff_dif/static *
+recursive-include pretalx_iff_dif/templates *
+recursive-include pretalx_iff_dif/locale *
