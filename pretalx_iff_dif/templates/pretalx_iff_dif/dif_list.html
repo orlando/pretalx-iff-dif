@@ -1,0 +1,31 @@
+{% extends "orga/base.html" %}
+{% load i18n %}
+{% block content %}
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{% trans "Dif" %}</th>
+        <th>{% trans "Years Received Dif Support" %}</th>
+        <th>{% trans "Travel Support Types" %}</th>
+        <th>{% trans "Speaker Email" %}</th>
+        <th>{% trans "Created at" %}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dif in difs %}
+      <tr>
+        <td>{{ dif.id }}</td>
+        <td>{{ dif.years_received_dif_support }}</td>
+        <td>{{ dif.travel_support_types }}</td>
+        <td>{{ dif.speaker_email }}</td>
+        <td>{{ dif.speaker_email }}</td>
+        <td>{{ dif.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

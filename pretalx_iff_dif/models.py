@@ -59,4 +59,5 @@ class Dif(models.Model):
     speaker_email = models.EmailField(
         max_length=255,
     )
-    timestamp = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
