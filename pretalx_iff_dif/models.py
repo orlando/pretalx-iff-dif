@@ -31,6 +31,24 @@ class TravelSupportTypes(Choices):
     ]
 
 
+class DifStates(Choices):
+    SUBMITTED = 'submitted'
+    ACCEPTED = 'accepted'
+    REJECTED = 'rejected'
+
+    valid_choices = [
+        (SUBMITTED, _('submitted')),
+        (ACCEPTED, _('accepted')),
+        (REJECTED, _('rejected')),
+    ]
+
+    valid_next_states = {
+        SUBMITTED: (REJECTED, ACCEPTED),
+        REJECTED: (ACCEPTED, SUBMITTED),
+        ACCEPTED: (REJECTED, SUBMITTED),
+    }
+
+
 class Dif(models.Model):
     event = models.ForeignKey(
         to='event.Event',
@@ -40,7 +58,7 @@ class Dif(models.Model):
     user = models.ForeignKey(
         to='person.User',
         on_delete=models.CASCADE,
-        related_name='difs'
+        related_name='difs',
     )
     submission = models.ForeignKey(
         to='submission.Submission',
@@ -63,6 +81,12 @@ class Dif(models.Model):
     )
     speaker_email = models.EmailField(
         max_length=255,
+    )
+    state = models.CharField(
+        max_length=DifStates.get_max_length(),
+        choices=DifStates.get_choices(),
+        default=DifStates.SUBMITTED,
+        verbose_name=_('Submission state'),
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
