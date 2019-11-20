@@ -46,9 +46,9 @@
         {% for dif in difs %}
           <tr>
             <td>{{ dif.id }}</td>
-            <td>{{ dif.years_received_dif_support }}</td>
-            <td>{{ dif.travel_support_types }}</td>
-            <td>{{ dif.speaker_email }}</td>
+            <td>{{ dif.readable_years_received_dif_support|title }}</td>
+            <td>{{ dif.readable_travel_support_types|title }}</td>
+            <td>{{ dif.readable_speaker_email }}</td>
             <td>
                 <a href="{{ dif.submission.orga_urls.base }}">
                     {{ dif.submission.title }}

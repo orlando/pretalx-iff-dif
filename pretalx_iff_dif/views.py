@@ -31,4 +31,4 @@ class DifList(PermMixin, ListView):
     template_name = 'pretalx_iff_dif/dif_list.html'
 
     def get_queryset(self):
-        return self.request.event.difs.all().order_by('-created_at')
+        return self.request.event.difs.all().order_by('created_at')

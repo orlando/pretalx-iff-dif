@@ -90,3 +90,20 @@ class Dif(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def readable_travel_support_types(self):
+        array = []
+        for support_type in self.travel_support_types:
+            array.append(support_type.replace('_', ' '))
+
+        return ", ".join(array)
+
+    def readable_years_received_dif_support(self):
+        array = []
+        for year in self.years_received_dif_support:
+            array.append(year)
+
+        return ", ".join(array)
+
+    def readable_speaker_email(self):
+        return self.speaker_email or self.user.email
