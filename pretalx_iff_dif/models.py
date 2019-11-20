@@ -37,6 +37,11 @@ class Dif(models.Model):
         on_delete=models.CASCADE,
         related_name='difs'
     )
+    user = models.ForeignKey(
+        to='person.User',
+        on_delete=models.CASCADE,
+        related_name='difs'
+    )
     submission = models.ForeignKey(
         to='submission.Submission',
         on_delete=models.CASCADE,
